@@ -32,8 +32,9 @@ gem 'grape-swagger-rails'
 gem 'grape_on_rails_routes'
 gem 'rack-cors', :require => 'rack/cors'
 
-gem 'devise'
+gem 'cancancan', '~> 2.0'
 gem 'config'
+gem 'devise'
 gem 'jwt'
 
 # Reduces boot times through caching; required in config/boot.rb

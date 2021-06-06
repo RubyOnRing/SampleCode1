@@ -50,9 +50,18 @@ module Api
             error!('Invalid authorization token', :unauthorized)
           end
 
+          def authorize!(action, resources)
+            unless Ability.new(current_user).can?(action, resources)
+              error!('403 Forbidden', 403)
+            end
+          end
+
+          def can?(action, resources)
+            Ability.new(current_user).can?(action, resources)
+          end
+
           def permitted_params
-            @permitted_params ||= declared(params,
-                                           include_missing: false)
+            @permitted_params ||= declared(params, include_missing: false)
           end
 
           def logger
