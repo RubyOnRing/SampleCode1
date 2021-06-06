@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Config subdomain
+Add to `/etc/hosts`
+```
+127.0.0.1 philips.ea.dave fonel.ea.dave
+```
 
-Things you may want to cover:
+`philips` and `fonel` is subdomain for companies
 
-* Ruby version
+Add to `config/development.rb`
 
-* System dependencies
+```
+config.hosts << 'philips.ea.dave'
+config.hosts << 'fonel.ea.dave'
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Api document
+```
+http://philips.ea.dave:3000/swagger
+```

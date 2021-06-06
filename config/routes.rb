@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  mount Api::Base, at: '/'
-  mount GrapeSwaggerRails::Engine => '/swagger'
+  constraints subdomain: Settings.subdomain do
+    mount Api::Base => '/'
+    mount GrapeSwaggerRails::Engine => '/swagger'
+  end
 end

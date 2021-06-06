@@ -41,3 +41,7 @@ yarn-debug.log*
 .DS_Store
 .well-know/
 config/credentials.yml.enc
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
