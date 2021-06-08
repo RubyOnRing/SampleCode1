@@ -1,5 +1,20 @@
 # README
 
+## Docker
+```
+docker compose up
+```
+
+Create database
+```
+docker-compose exec app bundle exec rake db:setup db:migrate
+```
+
+Access to console
+```
+docker-compose exec app bundle exec rails console
+```
+
 ## Config subdomain
 Add to `/etc/hosts`
 ```
