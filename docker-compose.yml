@@ -17,7 +17,8 @@ services:
     env_file: .env
     environment:
       RAILS_ENV: development
-
+    stdin_open: true
+    tty: true
   database:
     container_name: estate_agent_postgres
     image: postgres:12.1
