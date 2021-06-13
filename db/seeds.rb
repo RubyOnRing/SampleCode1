@@ -60,6 +60,7 @@ Staff.all.each do |staff|
     house = staff.houses.new
     house.contract_id = Contract.all.sample.id
     house.house_number = Faker::Address.building_number
+    house.name = Faker::Lorem.word
     house.street = Faker::Address.street_name
     house.city = Faker::Address.city
     house.post_code = Faker::Address.postcode

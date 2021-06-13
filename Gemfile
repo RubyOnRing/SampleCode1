@@ -36,6 +36,8 @@ gem 'cancancan', '~> 2.0'
 gem 'config'
 gem 'devise'
 gem 'jwt'
+gem 'kaminari'
+gem 'ransack'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

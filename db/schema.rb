@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_06_083314) do
+ActiveRecord::Schema.define(version: 2021_06_12_125121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2021_06_06_083314) do
     t.integer "price"
     t.integer "length_of_contract"
     t.string "state"
+    t.string "name"
     t.index ["agent_id"], name: "index_houses_on_agent_id"
     t.index ["contract_id"], name: "index_houses_on_contract_id"
   end
@@ -87,9 +88,9 @@ ActiveRecord::Schema.define(version: 2021_06_06_083314) do
   create_table "users", force: :cascade do |t|
     t.bigint "entity_id"
     t.string "email"
+    t.string "subdomain"
     t.string "first_name"
     t.string "last_name"
-    t.string "subdomain"
     t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

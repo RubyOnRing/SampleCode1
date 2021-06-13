@@ -10,13 +10,15 @@ module Api
         desc 'Return all houses'
         get '', root: :houses do
           authorize! :read, House
-          current_entity.houses
+          current_entity.houses.ransack(params).result(distinct: true)
+                        .page(params[:page]).per(12)
         end
 
         desc 'Create house'
         params do
           requires :house, type: Hash do
             requires :house_number, type: String
+            optional :name, type: String
             optional :street, type: String
             optional :city, type: String
             optional :post_code, type: String
@@ -43,6 +45,7 @@ module Api
         params do
           requires :house, type: Hash do
             requires :house_number, type: String
+            optional :name, type: String
             optional :street, type: String
             optional :city, type: String
             optional :post_code, type: String
