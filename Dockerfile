@@ -1,4 +1,4 @@
-FROM ruby:2.7.2
+FROM ruby:2.7.3
 
 # ENV BUNDLER_VERSION=2.1.4
 
@@ -20,7 +20,7 @@ RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle check || bundle install
 COPY package.json yarn.lock ./
 RUN ls -lah
-RUN yarn install 
+RUN yarn install
 
 COPY . ./
 

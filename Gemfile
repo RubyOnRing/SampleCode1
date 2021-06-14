@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '2.7.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
@@ -58,6 +58,16 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Deploy
+  gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
+  gem 'ed25519', '>= 1.2', '< 2.0'
+
+  gem 'capistrano', '~> 3.11'
+  gem 'capistrano-passenger', '~> 0.2.1'
+  gem 'capistrano-rails', '~> 1.4'
+  gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+  gem 'capistrano-sidekiq'
 end
 
 group :test do
