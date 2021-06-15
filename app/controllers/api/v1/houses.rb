@@ -8,6 +8,10 @@ module Api
 
       resource :houses do
         desc 'Return all houses'
+        params do
+          requires :entity_subdomain, type: String, desc: 'Entity subdomain'
+        end
+
         get '', root: :houses do
           authorize! :read, House
           current_entity.houses.ransack(params).result(distinct: true)

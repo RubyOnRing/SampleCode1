@@ -13,7 +13,7 @@ module Api
 
         helpers do
           def current_entity
-            @current_entity || Entity.find_by(subdomain: subdomain)
+            @current_entity || Entity.find_by(subdomain: entity_subdomain)
           end
 
           def current_user
@@ -36,8 +36,7 @@ module Api
           def authenticate!
             error!('Authorization header is required', :unauthorized) unless headers['Authorization']
             @decoded = JsonWebToken.decode(headers['Authorization'])
-
-            if subdomain && subdomain != @decoded[:subdomain]
+            if entity_subdomain.blank? || entity_subdomain != @decoded[:subdomain]
               error!('Invalid authorization token', :unauthorized)
             end
 
@@ -68,8 +67,8 @@ module Api
             Rails.logger
           end
 
-          def subdomain
-            ActionDispatch::Http::URL.extract_subdomains(request.env['SERVER_NAME'], Settings.tld_length).first
+          def entity_subdomain
+            params[:entity_subdomain]
           end
         end
 
