@@ -8,6 +8,8 @@ class Entity < ApplicationRecord
   has_many :contracts
   has_many :document_types
 
+  has_one_attached :logo
+
   def agents
     users.where(type: %w[Staff Manager])
   end

@@ -80,4 +80,6 @@ Rails.application.configure do
   # config.hosts += Settings.subdomain
   config.hosts << 'philips.ea.dave'
   config.hosts << 'fonel.ea.dave'
+
+  config.asset_host = 'http://localhost:3000'
 end

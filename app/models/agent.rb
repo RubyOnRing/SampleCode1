@@ -2,5 +2,4 @@
 
 class Agent < User
   has_many :houses
-  belongs_to :entity
 end

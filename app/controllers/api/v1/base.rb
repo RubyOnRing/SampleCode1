@@ -5,6 +5,7 @@ module Api
     class Base < Grape::API
       mount Api::V1::Auth
       mount Api::V1::Houses
+      mount Api::V1::Users
 
       add_swagger_documentation(
         api_version: 'v1',
