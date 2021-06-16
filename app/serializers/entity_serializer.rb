@@ -5,7 +5,7 @@ class EntitySerializer < ActiveModel::Serializer
     if object.logo.attached?
       rails_blob_url(object.logo)
     else
-      ActionController::Base.helpers.image_url("default_company.png")
+      Settings.images.default_entity_logo_url
     end
   end
 end

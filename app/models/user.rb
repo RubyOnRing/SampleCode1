@@ -29,7 +29,7 @@ class User < ApplicationRecord
     if avatar.attached?
       rails_blob_url(avatar, only_path: true)
     else
-      ActionController::Base.helpers.image_url("default_avatar.png")
+      Settings.images.default_user_avatar_url
     end
   end
 
