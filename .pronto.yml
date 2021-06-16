@@ -1,0 +1,5 @@
+github_pr_review:
+  format: "[%{runner}] %{level} %{msg}"
+
+exclude:
+  - db/**/*

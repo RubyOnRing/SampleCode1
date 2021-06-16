@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class JsonWebToken
-  SECRET_KEY = 'EA'.freeze
+  SECRET_KEY = 'EA'
 
   def self.encode(payload, exp = 24.hours.from_now)
     payload[:exp] = exp.to_i
