@@ -5,14 +5,20 @@ class Ability
     user ||= User.new
     entity = user.entity
 
-    if user.is_a?(Manager)
+    case user
+    when Manager
       can :manage, Entity, id: user.entity_id
       can :manage, House, id: entity.houses
+      can :manage, Contract, id: entity.contracts
       can :read, Manager
-    elsif user.is_a?(Staff)
-      can :manage, House, id: entity.houses
+    when Staff
+      can :manage, House do |house|
+        house.agent.in?(entity.agents)
+      end
       can :read, Staff
-    elsif user.is_a?(Client)
+      can :read, Contract, id: entity.contracts
+    else
+      # Client
       can :read, Client
     end
   end

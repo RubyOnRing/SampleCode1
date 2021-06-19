@@ -2,4 +2,5 @@ github_pr_review:
   format: "[%{runner}] %{level} %{msg}"
 
 exclude:
-  - db/**/*
+  - db/**/*.rb
+  - /db/migrate/*.rb

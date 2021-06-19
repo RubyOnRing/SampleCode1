@@ -14,35 +14,37 @@ module Api
 
         get '', root: :houses do
           authorize! :read, House
-          current_entity.houses.ransack(params).result(distinct: true)
+          current_entity.houses.ransack(params).result(distinct: true).order(created_at: :desc)
                         .page(params[:page]).per(12)
         end
 
         desc 'Create house'
         params do
           requires :house, type: Hash do
-            requires :house_number, type: String
+            requires :contract_id, type: Integer
+            requires :deposit, type: Integer
+            requires :rent_price, type: Integer
+            requires :max_people_allowed, type: Integer
+            optional :house_number, type: String
             optional :name, type: String
-            optional :street, type: String
+            optional :address, type: String
             optional :city, type: String
             optional :post_code, type: String
-            optional :max_people, type: Integer
             optional :status, type: String
             optional :description, type: String
-            optional :start_at, type: DateTime
-            optional :deposit_amount, type: Integer
-            optional :price, type: Integer
-            optional :length_of_contract, type: Integer
+            optional :start_hiring_date, type: DateTime
             optional :state, type: String
           end
         end
 
         post '', root: :houses do
-          house = current_entity.houses.new permitted_params[:house]
-          house.agent = current_user
-          authorize! :create, House
-          house.save!
-          house
+          house = current_user.houses.new permitted_params[:house]
+          authorize! :create, house
+          if house.save
+            house
+          else
+            error!({ messages: house.errors.messages }, 422)
+          end
         end
 
         desc 'Update house'

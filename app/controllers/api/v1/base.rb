@@ -6,6 +6,7 @@ module Api
       mount Api::V1::Auth
       mount Api::V1::Houses
       mount Api::V1::Users
+      mount Api::V1::Contracts
 
       add_swagger_documentation(
         api_version: 'v1',
