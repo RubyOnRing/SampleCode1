@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_13_074652) do
+ActiveRecord::Schema.define(version: 2021_06_17_091812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,17 +98,17 @@ ActiveRecord::Schema.define(version: 2021_06_13_074652) do
     t.string "city"
     t.string "post_code"
     t.string "status", default: "draft"
-    t.string "max_people"
+    t.string "max_people_allowed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "agent_id"
     t.string "description"
-    t.datetime "start_at"
-    t.integer "deposit_amount"
-    t.integer "price"
-    t.integer "length_of_contract"
+    t.datetime "start_hiring_date"
+    t.integer "deposit"
+    t.integer "rent_price"
     t.string "state"
     t.string "name"
+    t.string "address"
     t.index ["agent_id"], name: "index_houses_on_agent_id"
     t.index ["contract_id"], name: "index_houses_on_contract_id"
   end

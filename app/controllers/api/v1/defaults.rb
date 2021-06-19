@@ -34,6 +34,7 @@ module Api
 
           def authenticate!
             error!('Authorization header is required', :unauthorized) unless headers['Authorization']
+
             @decoded = JsonWebToken.decode(headers['Authorization'])
             if entity_subdomain && entity_subdomain != @decoded[:subdomain]
               error!('Invalid authorization token', :unauthorized)
@@ -49,9 +50,7 @@ module Api
           end
 
           def authorize!(action, resources)
-            unless Ability.new(current_user).can?(action, resources)
-              error!('403 Forbidden', 403)
-            end
+            error!('403 Forbidden', 403) unless Ability.new(current_user).can?(action, resources)
           end
 
           def can?(action, resources)

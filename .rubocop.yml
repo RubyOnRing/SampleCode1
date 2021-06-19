@@ -2,8 +2,9 @@ AllCops:
   TargetRubyVersion: 2.7
   NewCops: enable
   Exclude:
-    - 'db/*'
+    - 'db/**/*'
     - Gemfile
+    - Gemfile.lock
 
 Layout/LineLength:
   Enabled: true
@@ -15,9 +16,6 @@ Metrics/MethodLength:
 
 Style/Documentation:
   Enabled: false
-
-Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
 
 Style/StringLiterals:
   Enabled: true
