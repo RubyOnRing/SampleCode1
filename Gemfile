@@ -38,6 +38,7 @@ gem 'devise'
 gem 'jwt'
 gem 'kaminari'
 gem 'ransack'
+gem 'rails-i18n', '~> 6.0'
 
 # Digital Storage
 gem 'aws-sdk-s3', require: false

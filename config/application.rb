@@ -19,5 +19,8 @@ module RorEstateAgent
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.time_zone = 'Amsterdam'
+    config.i18n.available_locales = %i[en nl]
+    I18n.default_locale = :nl
   end
 end
