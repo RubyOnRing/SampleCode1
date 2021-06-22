@@ -22,8 +22,8 @@ module Api
         params do
           requires :house, type: Hash do
             requires :contract_id, type: Integer
-            requires :deposit, type: Integer
-            requires :rent_price, type: Integer
+            requires :deposit, type: Float
+            requires :rent_price, type: Float
             requires :max_people_allowed, type: Integer
             optional :house_number, type: String
             optional :name, type: String

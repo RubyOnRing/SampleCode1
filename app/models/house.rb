@@ -5,5 +5,6 @@ class House < ApplicationRecord
   belongs_to :contract
 
   validates_presence_of :deposit, :rent_price, :name, :house_number, :address, :city, :state,
-                        :post_code, :max_people_allowed
+                        :post_code, :max_people_allowed, :start_hiring_date
+  validates_numericality_of :deposit, :rent_price
 end
